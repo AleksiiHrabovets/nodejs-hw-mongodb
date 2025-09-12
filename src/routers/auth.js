@@ -33,7 +33,6 @@ router.post(
 router.post('/logout', ctrlWrapper(logoutUserController));
 
 router.post('/refresh', ctrlWrapper(refreshUsersSessionController));
-export default router;
 
 router.post(
   '/send-reset-email',
@@ -46,3 +45,5 @@ router.post(
   validateBody(resetPasswordSchema),
   ctrlWrapper(resetPasswordController),
 );
+
+export default router;

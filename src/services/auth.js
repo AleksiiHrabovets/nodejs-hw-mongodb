@@ -111,6 +111,7 @@ export const requestResetToken = async (email) => {
       )}/reset-password?token=${resetToken}">here</a> to reset your password!</p>`,
     });
   } catch (err) {
+    console.log('❌ SMTP error:', err); // <-- додай це
     throw createHttpError({
       status: 500,
       error: err,

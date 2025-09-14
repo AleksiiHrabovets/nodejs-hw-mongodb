@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
     "lint": "eslint src/**/*.js",
+    "prestart": "node src/utils/generate-openapi.js",
     "start": "node ./src/index.js",
     "build": "npm run build-docs",
     "build-docs": "redocly bundle docs/openapi.yaml --ext json -o docs/swagger.json",

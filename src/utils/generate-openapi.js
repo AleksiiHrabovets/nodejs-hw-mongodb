@@ -1,4 +1,15 @@
-openapi: 3.1.0
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+
+const template = `openapi: 3.1.0
 info:
   version: 1.0.0
   title: Contacts app
@@ -12,8 +23,7 @@ tags:
   - name: Auth
     description: Authorization operations.
 servers:
-  - url: http://localhost:3000
-  - url: https://nodejs-hw-mongodb-voqb.onrender.com
+  - url: ${baseUrl}
 paths:
   /contacts/{id}:
     get:
@@ -50,3 +60,7 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
+`;
+
+fs.writeFileSync(path.join(__dirname, '../../docs/openapi.yaml'), template);
+console.log('✅ openapi.yaml згенеровано з BASE_URL:', baseUrl);

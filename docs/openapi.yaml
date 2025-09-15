@@ -13,6 +13,7 @@ tags:
     description: Authorization operations.
 servers:
   - url: https://nodejs-hw-mongodb-7-xaib.onrender.com
+  - url: http://localhost:3000
 paths:
   /contacts/{id}:
     get:
